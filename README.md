@@ -2,8 +2,8 @@
 A Summer Internship Project under PHYTEC India.
 
 ## Description
-The Access Control project ensures secure andreliable access management to controlled areas. Itutilizes RFID card credentials for granting ordenying access and offers features like timetracking and remote administration.
+The Access Control project ensures *secure* and *reliable* *access management* to controlled areas. It utilizes **RFID Card** credentials for granting ordenying access and offers features like time tracking and remote administration.
 
-Hardware components include a rugged board,RFID reader module, and RTC module for accuratetimekeeping. I2C and UART protocols enableseamless communication. A user-friendly webinterface is created using HTML, CSS, andJavaScript, allowing administrators to efficientlymanage access settings and user information. Alocally hosted Python server handles data storageand access control logic.
+Hardware components include a **Rugged Board-A5D2x**, **RFID reader module**, and **RTC module** for accurate timekeeping. **I2C** and **UART** protocols enable seamless communication. A user-friendly webinterface is created using **HTML**, **CSS**, and **JavaScript**, allowing administrators to efficiently manage access settings and user information. Alocally hosted **Python Server** handles data storage and access control logic.
 
-Multithreading and the MRAA embedded libraryoptimize performance. Linux is chosen for stabilityand security. Overall, the Access Control projectprovides a scalable solution for secure accessmanagement, combining hardware componentsand software technologies effectively.
+**Multithreading** and the **MRAA** embedded library optimize performance. Linux is chosen for stability and security. Overall, the Access Control project provides a scalable solution for *secure accessmanagement*, combining hardware componentsand software technologies effectively.

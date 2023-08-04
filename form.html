@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Account Creation</title>
+  <link rel="stylesheet" type="text/css" href="formstyles.css">
+  <script src="formscript.js"></script>
+</head>
+<body>
+  <div class="container">
+    <div class="form">
+      <div class="title">Hey there!</div>
+      <div class="subtitle">Fill your details to access.</div>
+      <div class="input-container ic1">
+        <input id="name" class="input" type="text" placeholder="Name" />
+        <div class="error" id="name-error"></div>
+      </div>
+      <div class="input-container ic2">
+        <input id="access-id" class="input" type="text" placeholder="Access ID" />
+        <div class="error" id="access-id-error"></div>
+      </div>
+      <div class="input-container ic2">
+        <input id="password" class="input" type="password" placeholder="Master Password" />
+        <div class="error" id="password-error"></div>
+      </div>
+      <button type="button" class="submit" onclick="submitForm()">Submit</button>
+    </div>
+  </div>
+</body>
+</html>

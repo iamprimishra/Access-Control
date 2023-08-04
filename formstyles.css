@@ -1,0 +1,99 @@
+body {
+    align-items: center;
+    background-color: #1F2739;
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+  }
+  
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+  
+  .form {
+    background-color: #15172b;
+    border-radius: 20px;
+    box-sizing: border-box;
+    padding: 20px;
+    width: 320px;
+  }
+  
+  .title {
+    color: #eee;
+    font-family: "Open Sans", sans-serif;
+    font-size: 36px;
+    font-weight: bold;
+    margin-top: 0;
+  }
+  
+  .subtitle {
+    color: #eee;
+    font-family: "Open Sans", sans-serif;
+    font-size: 16px;
+    font-weight: normal;
+    margin-top: 10px;
+  }
+  
+  .input-container {
+    position: relative;
+  }
+  
+  .ic1 {
+    margin-top: 30px;
+  }
+  
+  .ic2 {
+    margin-top: 20px;
+  }
+  
+  .input {
+    background-color: #303245;
+    border-radius: 12px;
+    border: 0;
+    box-sizing: border-box;
+    color: #eee;
+    font-size: 18px;
+    height: 50px;
+    outline: 0;
+    padding: 0 20px;
+    width: 100%;
+  }
+  
+  .input:focus {
+    border-color: #dc2f55;
+  }
+  
+  .submit {
+    background-color: #08d;
+    border-radius: 12px;
+    border: 0;
+    box-sizing: border-box;
+    color: #eee;
+    cursor: pointer;
+    font-size: 18px;
+    height: 50px;
+    margin-top: 30px;
+    outline: 0;
+    text-align: center;
+    width: 100%;
+  }
+  
+  .submit:active {
+    background-color: #06b;
+  }
+  
+  .error {
+    color: #dc2f55;
+    font-family: "Open Sans", sans-serif;
+    font-size: 12px;
+    margin-top: 4px;
+    position: absolute;
+    bottom: -20px;
+    left: 20px;
+    z-index: 1;
+  }
+  

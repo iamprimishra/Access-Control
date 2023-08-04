@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.1">
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='48' height='48' id='scan'%3E%3Cdefs%3E%3ClinearGradient id='b' x1='868.253' x2='937.656' y1='521.354' y2='588.736' gradientTransform='translate(-1326.967 -1845.382) scale(1.53785)' gradientUnits='userSpaceOnUse' xlink:href='%23a'%3E%3C/linearGradient%3E%3ClinearGradient id='a'%3E%3Cstop offset='0' stop-color='%2324f3d2'%3E%3C/stop%3E%3Cstop offset='.394' stop-color='%230674f0'%3E%3C/stop%3E%3Cstop offset='.507' stop-color='%236961b5'%3E%3C/stop%3E%3Cstop offset='.813' stop-color='%23f34660'%3E%3C/stop%3E%3Cstop offset='1' stop-color='%23ee078d'%3E%3C/stop%3E%3C/linearGradient%3E%3C/defs%3E%3Cg font-family='sans-serif' font-size='45.121' font-weight='400' letter-spacing='0' transform='translate(0 -1004.362)' word-spacing='0'%3E%3Crect width='48' height='48' x='.001' y='-1052.362' fill='url(%23b)' rx='10.144' ry='10.144' transform='scale(1 -1)'%3E%3C/rect%3E%3Cpath style='line-height:125%25;text-indent:0;text-align:start;text-decoration-line:none;text-transform:none;block-progression:tb' fill='%23fff' d='M11 1020.362h27v16H11zm2 2v12h1v-12zm2 0v12h1v-12zm2 0v9h1v-9zm2 0v9h1v-9zm2 0v9h1v-9zm2 0v9h1v-9zm2 0v9h1v-9zm2 0v9h1v-9zm2 0v12h1v-12zm2 0v9h1v-9zm2 0v9h1v-9zm2 0v12h1v-12zm-18 11v1h1v-1zm2 0v1h1v-1zm2 0v1h1v-1zm2 0v1h1v-1zm2 0v1h1v-1zm2 0v1h1v-1zm4 0v1h1v-1zm2 0v1h1v-1z' color='%23000' font-size='medium' overflow='visible'%3E%3C/path%3E%3C/g%3E%3C/svg%3E" />
+    <title>Project Access Control</title>
+    <style>
+        @charset "UTF-8";
+        @import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,700);
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 300;
+            line-height: 1.42em;
+            color: #aea1a1;
+            background-color: #1F2739;
+        }
+
+        h1 {
+            font-size: 3em;
+            font-weight: 300;
+            line-height: 1em;
+            text-align: center;
+            color: #4DC3FA;
+        }
+
+        h2 {
+            font-size: 1em;
+            font-weight: 300;
+            text-align: center;
+            display: block;
+            line-height: 1em;
+            padding-bottom: 2em;
+            color: #FB667A;
+        }
+
+        h2 a {
+            font-weight: 700;
+            text-transform: uppercase;
+            color: #FB667A;
+            text-decoration: none;
+        }
+
+        .blue {
+            color: #185875;
+        }
+
+        .yellow {
+            color: #FFF842;
+        }
+
+        .container th h1 {
+            font-weight: bold;
+            font-size: 1em;
+            text-align: left;
+            color: #185875;
+        }
+
+        .container td {
+            font-weight: normal;
+            font-size: 1em;
+            -webkit-box-shadow: 0 2px 2px -2px #0E1119;
+            -moz-box-shadow: 0 2px 2px -2px #0E1119;
+            box-shadow: 0 2px 2px -2px #0E1119;
+        }
+
+        .container {
+            text-align: left;
+            overflow: hidden;
+            width: 80%;
+            margin: 0 auto;
+            display: table;
+            padding: 0 0 2em 0;
+        }
+
+        .container td,
+        .container th {
+            padding-bottom: 2%;
+            padding-top: 2%;
+            padding-left: 2%;
+        }
+
+        .container tr:nth-child(odd) {
+            background-color: #323C50;
+        }
+
+        .container tr:nth-child(even) {
+            background-color: #2C3446;
+        }
+
+        .container th {
+            background-color: #1F2739;
+        }
+
+        .container td:first-child {
+            color: #A7A1AE;
+        }
+
+        .valid {
+            color: #a1ee59;
+        }
+
+        .notvalid {
+            color: #FB667A;
+        }
+
+        .container tr:hover {
+            background-color: #464A52;
+            -webkit-box-shadow: 0 6px 6px -6px #0E1119;
+            -moz-box-shadow: 0 6px 6px -6px #0E1119;
+            box-shadow: 0 6px 6px -6px #0E1119;
+        }
+
+        .container td:hover {
+            background-color: #FFF842;
+            color: #403E10;
+            font-weight: bold;
+            box-shadow: #7F7C21 -1px 1px, #7F7C21 -2px 2px, #7F7C21 -3px 3px, #7F7C21 -4px 4px, #7F7C21 -5px 5px, #7F7C21 -6px 6px;
+            transform: translate3d(6px, -6px, 0);
+            transition-delay: 0s;
+            transition-duration: 0.4s;
+            transition-property: all;
+            transition-timing-function: line;
+        }
+
+        .reset-cell {
+            background-color: #1F2739;
+            cursor: pointer;
+        }
+
+        .reset-cell:hover {
+            background-color: #4DC3FA;
+        }
+
+        .reset-cell:before {
+            content: "DELETE";
+            color: white;
+            display: block;
+            text-align: center;
+            padding: 8px 0;
+            transition: color 0.3s ease;
+        }
+
+        .reset-cell:hover:before {
+            color: #403E10;
+        }
+
+        .edit-cell {
+            background-color: #1F2739;
+            cursor: pointer;
+        }
+
+        .edit-cell:hover {
+            background-color: #4DC3FA;
+        }
+
+        .edit-cell:before {
+            content: "EDIT";
+            color: white;
+            display: block;
+            text-align: center;
+            padding: 8px 0;
+            transition: color 0.3s ease;
+        }
+
+        .edit-cell:hover:before {
+            color: #403E10;
+        }
+
+        .slider-cell {
+            background-color: #1F2739;
+            text-align: left;
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #2C3446;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            -webkit-transition: .4s;
+            transition: .4s;
+        }
+
+        input:checked+.slider {
+            background-color: #4DC3FA;
+        }
+
+        input:focus+.slider {
+            box-shadow: 0 0 1px #4DC3FA;
+        }
+
+        input:checked+.slider:before {
+            -webkit-transform: translateX(26px);
+            -ms-transform: translateX(26px);
+            transform: translateX(26px);
+        }
+
+        .slider.round {
+            border-radius: 34px;
+        }
+
+        .slider.round:before {
+            border-radius: 50%;
+        }
+
+        .container td.reset-cell:hover {
+            background-color: #FB667A;
+            color: white;
+            box-shadow: #82313b -1px 1px, #82313b -2px 2px, #82313b -3px 3px, #82313b -4px 4px, #82313b -5px 5px, #82313b -6px 6px;
+            transform: translate3d(6px, -6px, 0);
+            transition-delay: 0s;
+            transition-duration: 0.4s;
+            transition-property: all;
+            transition-timing-function: line;
+        }
+
+        .container td.reset-cell:hover:before {
+            color: white;
+        }
+
+        .custom-button {
+            background-color: #1F2739;
+            cursor: pointer;
+        }
+
+        .custom-button:hover {
+            background-color: #4DC3FA;
+        }
+
+        .custom-button:before {
+            content: "ADD USER";
+            color: white;
+            display: block;
+            text-align: center;
+            padding: 8px 0;
+            transition: color 0.3s ease;
+        }
+
+        @media (max-width: 800px) {
+
+            .container td:nth-child(4),
+            .container th:nth-child(4) {
+                display: none;
+            }
+        }
+
+        .modal {
+            display: none;
+            /* Hidden by default */
+            position: fixed;
+            /* Stay in place */
+            z-index: 1;
+            /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%;
+            /* Full width */
+            height: 100%;
+            /* Full height */
+            overflow: auto;
+            /* Enable scroll if needed */
+            background-color: rgb(0, 0, 0);
+            /* Fallback color */
+            background-color: rgba(0, 0, 0, 0.4);
+            /* Black w/ opacity */
+        }
+
+        .modal-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+
+        .form {
+            background-color: #15172b;
+            border-radius: 20px;
+            box-sizing: border-box;
+            padding: 20px;
+            width: 320px;
+        }
+
+        .title {
+            color: #eee;
+            font-family: "Open Sans", sans-serif;
+            font-size: 36px;
+            font-weight: bold;
+            margin-top: 0;
+        }
+
+        .subtitle {
+            color: #eee;
+            font-family: "Open Sans", sans-serif;
+            font-size: 16px;
+            font-weight: normal;
+            margin-top: 10px;
+        }
+
+        .input-container {
+            position: relative;
+        }
+
+        .ic1 {
+            margin-top: 30px;
+        }
+
+        .ic2 {
+            margin-top: 20px;
+        }
+
+        .input {
+            background-color: #303245;
+            border-radius: 12px;
+            border: 0;
+            box-sizing: border-box;
+            color: #eee;
+            font-size: 18px;
+            height: 50px;
+            outline: 0;
+            padding: 0 20px;
+            width: 100%;
+        }
+
+        .input:focus {
+            border-color: #dc2f55;
+        }
+
+        .submit {
+            background-color: #08d;
+            border-radius: 12px;
+            border: 0;
+            box-sizing: border-box;
+            color: #eee;
+            cursor: pointer;
+            font-size: 18px;
+            height: 50px;
+            margin-top: 30px;
+            outline: 0;
+            text-align: center;
+            width: 100%;
+        }
+
+        .submit:active {
+            background-color: #06b;
+        }
+
+        .error {
+            color: #dc2f55;
+            font-family: "Open Sans", sans-serif;
+            font-size: 12px;
+            margin-top: 4px;
+            position: absolute;
+            bottom: -20px;
+            left: 20px;
+            z-index: 1;
+        }
+
+        .close {
+            position: absolute;
+            color: #aaa;
+            background-color: #FFF842;
+            float: right;
+            font-size: 2rem;
+            font-weight: bold;
+            top: 28vh;
+            right: 36vw;
+            width: 50px;
+            height: 50px;
+            /* padding: 10px 10px; */
+            border-radius: 50%;
+            text-align: center;
+            transition: all 0.2s ease-in-out;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .close:hover,
+        .close:focus {
+            /* color: black; */
+            text-decoration: none;
+            cursor: pointer;
+            background-color: #dc2f55;
+        }
+
+
+        .unidentified-access {
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-top: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1><span class="blue">&lt;</span>Project<span class="blue">&gt;</span> <span class="yellow">Access Control</span>
+    </h1>
+    <h2>An <strong>IoT &amp; Embedded System</strong> project developed with passion by <strong><a
+                href="https://www.linkedin.com/in/priyanshu-das-8b7282214">Priyanshu Das</a></strong> &amp; <strong><a
+                href="https://www.linkedin.com/in/priyanshu-mishra-3b3968203">Priyanshu Mishra</a></strong></h2>
+    <table class="container">
+        <thead>
+            <tr>
+                <th colspan="5">
+                    <h1>&lt; User Database &gt;</h1>
+                </th>
+                <th class="custom-button" onclick="addNameHandler(this)"></th>
+            </tr>
+            <tr>
+                <th>
+                    <h1>SL No.</h1>
+                </th>
+                <th>
+                    <h1>Name</h1>
+                </th>
+                <th>
+                    <h1>Access ID</h1>
+                </th>
+                <th>
+                    <h1>Last Access</h1>
+                </th>
+                <th>
+                    <h1>Edit Details</h1>
+                </th>
+                <th>
+                    <h1>Delete Entry</h1>
+                </th>
+            </tr>
+        </thead>
+        <tbody class="access-data">
+            <!-- <tr>
+                <td>01</td>
+                <td>Priyanshu Mishra</td>
+                <td>3831290843274</td>
+                <td>01:32:50</td>
+                <td class="edit-cell"></td>
+                <td class="reset-cell"></td>
+            </tr>
+            <tr>
+                <td>02</td>
+                <td>Kalinga Krishna Sahoo</td>
+                <td>3831290843274</td>
+                <td>00:51:22</td>
+                <td class="edit-cell"></td>
+                <td class="reset-cell"></td>
+            </tr>
+            <tr>
+                <td>03</td>
+                <td>K. Tejas</td>
+                <td>3831290843274</td>
+                <td>00:24:34</td>
+                <td class="edit-cell"></td>
+                <td class="reset-cell"></td>
+            </tr>
+            <tr>
+                <td>04</td>
+                <td>Anshul Kedia</td>
+                <td>3831290843274</td>
+                <td>00:12:10</td>
+                <td class="edit-cell"></td>
+                <td class="reset-cell"></td>
+            </tr>
+            <tr>
+                <td>05</td>
+                <td>Anjali Jena</td>
+                <td>3831290843274</td>
+                <td>00:46:19</td>
+                <td class="edit-cell"></td>
+                <td class="reset-cell"></td>
+            </tr>
+            <tr>
+                <td>06</td>
+                <td>Arya Archita</td>
+                <td>3831290843274</td>
+                <td>00:31:52</td>
+                <td class="edit-cell"></td>
+                <td class="reset-cell"></td>
+            </tr> -->
+        </tbody>
+    </table>
+    <table class="container mode-selection">
+        <thead>
+            <tr>
+                <th colspan="6">
+                    <h1>&lt; Mode Selection &gt;</h1>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td colspan="6" class="slider-cell">
+                    <label class="switch">
+                        <input type="checkbox">
+                        <span class="slider"></span>
+                    </label>
+                </td>
+                <td align="center" id="mode-val"><span>Access</span> Mode</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div id="myModal" class="modal">
+        <div class="modal-container">
+            <span class="close">&times;</span>
+
+            <div class="form">
+                <div class="title">Hey there!</div>
+                <div class="subtitle">Fill your details to access.</div>
+                <div class="input-container ic1">
+                    <input id="name" class="input" type="text" placeholder="Name" />
+                    <div class="error" id="name-error"></div>
+                </div>
+                <div class="input-container ic2">
+                    <input id="access-id" class="input" type="text" placeholder="Access ID" />
+                    <div class="error" id="access-id-error"></div>
+                </div>
+                <div class="input-container ic2">
+                    <input id="password" class="input" type="password" placeholder="Master Password" />
+                    <div class="error" id="password-error"></div>
+                </div>
+                <button type="button" class="submit" onclick="editNameHandler(this)">Submit</button>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <script>
+        // Get the modal
+        var modal = document.getElementById("myModal");
+        console.log(modal)
+        // Get the button that opens the modal
+        var btn = document.getElementsByClassName("custom-button")[0];
+        console.log(btn)
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks on the button, open the modal
+        btn.onclick = function () {
+            console.log("test")
+            modal.style.display = "block";
+            modal.querySelector("#access-id").disabled = false;
+            modal.querySelector(".submit").onclick = addNameHandler
+        }
+
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function () {
+            modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+
+
+        function editHandler(event) {
+            // console.log(event.parentNode);
+            let name = modal.querySelector("#name");
+            let accessID = modal.querySelector('#access-id');
+            name.value = event.parentNode.querySelectorAll("td")[1].innerHTML;
+            accessID.value = event.parentNode.querySelectorAll("td")[2].innerHTML;
+            modal.style.display = "block";
+            modal.parentID = event.parentNode;
+            // console.log(modal.querySelector(".submit"))
+            modal.querySelector("#access-id").disabled = true;
+        }
+
+        function editNameHandler(event) {
+            if ((event.parentNode.querySelector(".ic1 input").value) !== (modal.parentID.querySelectorAll("td")[1].innerHTML)) {
+                const newName = (event.parentNode.querySelector(".ic1 input").value);
+                axios
+                    .post(`${apiURI}/changename?id=${modal.querySelector('#access-id').value}`, {
+                        name: newName,
+                        accessKey: modal.querySelector('#password').value
+                    })
+                    .then((res) => {
+                        console.log(res);
+                        modal.style.display = "none";
+                        location.reload();
+                    });
+            }
+
+        }
+
+        function addNameHandler(event) {
+            const newName = modal.querySelector("#name").value;
+            axios
+                .post(`${apiURI}/adddata?id=${modal.querySelector('#access-id').value}`, {
+                    name: newName,
+                    accessKey: modal.querySelector('#password').value
+                })
+                .then((res) => {
+                    console.log(res);
+                    modal.style.display = "none";
+                    location.reload();
+                });
+
+        }
+
+        function deleteHandler(event) {
+            const pass = prompt("Enter the master key");
+            if (pass == "test")
+                axios.get(`${apiURI}/delete?id=${event.parentNode.querySelectorAll("td")[2].innerHTML}`).then((res) => { location.reload(); });
+        }
+
+
+        function test() {
+            console.log("test")
+        }
+    </script>
+
+    <script>
+        const apiURI = "http://192.168.8.30:3000/api";
+
+        getTable()
+        // setInterval(getTable, 5000);
+
+        function getTable() {
+            const accessTable = document.querySelector(".access-data")
+            console.log(accessTable)
+            axios.get(`${apiURI}/getdata`).then((res) => {
+                accessTable.innerHTML = ``;
+                let data = (JSON.parse(res.data).data)
+                data['access-keys'].forEach((element, index) => {
+                    console.log()
+                    axios.get(`${apiURI}/getlog?id=${element}`).then((res) => {
+
+
+                        let tableRow = `<tr>
+                            <td>${index + 1}</td>
+                            <td>${data.name[element] != undefined ? data.name[element] : ""}</td>
+                            <td class="valid">${element}</td>
+                            <td>${res.data != "No Data Available" ? res.data : "NA"}</td>
+                            <td class="edit-cell" onClick="editHandler(this)"></td>
+                            <td class="reset-cell" onClick="deleteHandler(this)"></td>
+                        </tr>`;
+
+                        if (index + 1 == data['access-keys'].length) {
+                            accessTable.innerHTML += tableRow + `<h2 class="unidentified-access">Unidentified Access</h2>`;
+
+                        }
+                        else {
+                            accessTable.innerHTML += tableRow;
+                        }
+
+
+
+                    });
+                });
+
+            })
+
+        }
+    </script>
+
+    <script>
+
+        getLog()
+        // setInterval(getTable, 5000);
+
+        function getLog() {
+            const accessTable = document.querySelector(".access-data")
+
+
+            axios.get(`${apiURI}/getlogs`).then((res) => {
+                axios.get(`${apiURI}/getdata`).then((resp) => {
+                    let keys = (JSON.parse(resp.data).data)
+                    keys = keys['access-keys'];
+                    // console.log(keys);
+                    let data = [... new Set(res.data.split("\n").slice(4).filter(element => element.includes("Denied")).map(element => element.substring(22, 34)).filter(element => !keys.includes(element)))];
+                    console.log(data);
+
+
+                    data.forEach((element, index) => {
+                        // console.log()
+
+                        axios.get(`${apiURI}/getlog?id=${element}`).then((res) => {
+
+
+                            let tableRow = `<tr>
+                                <td>${index + 1}</td>
+                                <td></td>
+                                <td class="notvalid">${element}</td>
+                                <td >${res.data}</td>
+                            </tr>`;
+
+                            accessTable.innerHTML += tableRow;
+                        })
+                    });
+
+                });
+            });
+        }
+    </script>
+    <script>
+
+        axios.get(`${apiURI}/getmode`).then((res) => {
+            if (res.data == 'read') {
+                axios
+                    .post(`${apiURI}/changemode`, {
+                        mode: "access",
+                    }).then(() => {
+                        toggleSwitch.checked = false;
+                        location.reload()
+                    })
+            }
+
+
+        })
+
+        const toggleSwitch = document.querySelector(".switch input");
+
+        toggleSwitch.addEventListener("change", (event) => {
+            const modeVal = document.querySelector("#mode-val span");
+            // console.log(modeVal);
+            if (modeVal.innerHTML == "Access") {
+
+                // const accesskey = "Test";
+                const accesskey = prompt('Access Key');
+                if (accesskey) {
+                    modeVal.innerHTML = "Read";
+                    axios
+                        .post(`${apiURI}/changemode`, {
+                            mode: "read",
+                            accesskey: accesskey,
+                        })
+                        .then((res) => {
+                            console.log(res);
+                        });
+                }
+                else {
+                    modeVal.innerHTML = "Access";
+                    toggleSwitch.checked = false;
+
+                }
+            } else {
+                modeVal.innerHTML = "Access";
+                axios
+                    .post(`${apiURI}/changemode`, {
+                        mode: "access",
+                    })
+                    .then((res) => {
+                        console.log(res);
+                    });
+
+            }
+        });
+    </script>
+</body>
+
+</html>

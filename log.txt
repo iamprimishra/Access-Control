@@ -1,0 +1,7 @@
+Activity Log Data :
+
+DateTime - Access Key ( Acces Granted or denied )
+
+2023-06-30 12:36:36 - 1800891E5CD3 (Access Granted)
+2023-06-30 12:36:37 - 1800891E5CD3 (Access Granted)
+2023-06-30 12:36:39 - 1800891E5CD3 (Access Granted)
